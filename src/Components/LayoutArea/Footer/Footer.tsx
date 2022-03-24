@@ -1,5 +1,5 @@
-import SocialMedia from "../SocialMedia/SocialMedia";
-import Total from "../Total/Total";
+import SocialMedia from "../../SharedArea/SocialMedia/SocialMedia";
+import Total from "../../TodoArea/Total/Total";
 import "./Footer.css";
 
 function Footer(): JSX.Element {

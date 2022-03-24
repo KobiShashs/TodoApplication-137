@@ -1,4 +1,4 @@
-import Logo from "../Logo/Logo";
+import Logo from "../../SharedArea/Logo/Logo";
 import "./Header.css";
 
 function Header(): JSX.Element {

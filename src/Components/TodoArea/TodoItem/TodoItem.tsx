@@ -1,6 +1,8 @@
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { Task } from "../../../Models/Task";
+import ILDate from "../../SharedArea/ILDate/ILDate";
+import ILTime from "../../SharedArea/ILTime/ILTime";
 import "./TodoItem.css";
-import { Task } from '../../Models/Task';
-import ILTime from "../ILTime/ILTime";
 interface TodoItemProps {
     task: Task;
 }
@@ -14,10 +16,15 @@ function TodoItem(props: TodoItemProps): JSX.Element {
                 <p>Title: {props.task.title}</p> 
                 <p>Desc: {props.task.description?.substring(0,15)} </p>
                 <p>Group: {props.task.group} </p>
+                <ILDate date={props.task.when  || new Date()}/>
                 <ILTime date={props.task.when  || new Date()}/>
             </div>
             <div>
                 <img src="https://picsum.photos/150" alt="" />
+            </div>
+            <div className="buttons">
+                <FaTrash size={42}/>
+                <FaEdit size={42}/>
             </div>
         </div>
     );

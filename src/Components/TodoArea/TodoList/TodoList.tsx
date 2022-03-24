@@ -1,8 +1,12 @@
 /* eslint-disable no-unreachable */
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Task } from "../../Models/Task";
-import notify, { SccMsg } from "../../Services/Notifications";
+import { FaPlusCircle } from "react-icons/fa";
+import { Task } from "../../../Models/Task";
+import globals from "../../../Services/Globals";
+import notify, { SccMsg } from "../../../Services/Notifications";
+import { getTasks } from "../../../Services/TasksApi";
+import CustomLink from "../../SharedArea/CustomLink/CustomLink";
 import TodoItem from "../TodoItem/TodoItem";
 import "./TodoList.css";
 
@@ -10,27 +14,22 @@ function TodoList(): JSX.Element {
 
     const [tasks, setTasks] = useState<Task[]>([]);
 
-    const getTasksApi = async () => {
-        return await axios.get<Task[]>('https://raw.githubusercontent.com/KobiShashs/TODO-JSON/main/tasks');
-    };
-
-
 
     // Side effects goes here
     useEffect(() => {
-        getTasksApi()
+        getTasks()
             .then((res) => {
                 console.log(res.data);
-                setTasks(res.data)
+                setTasks(res.data);
                 notify.success(SccMsg.GOT_TASKS);
             })
             .catch((err) => { notify.error(err); });
-    }, []);
+    },[]);
 
     return (
         <div className="TodoList">
             <h1>List of Tasks</h1>
-
+           <CustomLink to="/tasks/add"> <FaPlusCircle size={42}/></CustomLink>
 
             {/* <ul>
                 {tasks.map(task=><li key={task.id}>{task.title},{task.description}</li>)}

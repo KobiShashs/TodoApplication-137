@@ -9,9 +9,12 @@
 .App > .Header{
     grid-column: 12 span;
 }
+.App > .Menu{
+    grid-column:  2 span;
+}
 
 .App > .Main{
-    grid-column: 12 span;
+    grid-column: 10 span;
 }
 
 .App > .Footer{

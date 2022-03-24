@@ -24,7 +24,7 @@ class Notify{
 
     private extractMsg(err: any): string{
         
-				if(typeof err === 'string'){
+		if(typeof err === 'string'){
             return err;
         }
 

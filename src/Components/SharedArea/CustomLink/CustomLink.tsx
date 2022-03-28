@@ -7,8 +7,8 @@ interface CustomLinkProps{
 }
 function CustomLink(props: CustomLinkProps): JSX.Element {
     let resolved = useResolvedPath(props.to);
-    console.log(resolved);
-    console.log(resolved.pathname);
+    // console.log(resolved);
+    // console.log(resolved.pathname);
     let match = useMatch({ path: resolved.pathname, end: true });
     return (
         <div className="CustomLink" >

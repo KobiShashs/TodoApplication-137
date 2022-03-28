@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
 import "./Clock.css";
+import ILTime from '../ILTime/ILTime';
 
 function Clock(): JSX.Element {
 
     let timerID: any = null;
     const [time, setTime] = useState<Date>(new Date());
+
+    const zeroLead = (num: number) => {
+        num.toLocaleString('en-US', {
+            minimumIntegerDigits: 2,
+            useGrouping: false
+        }
+        )
+    }
 
     // componentDidMount
     useEffect(() => {
@@ -20,16 +29,16 @@ function Clock(): JSX.Element {
     // },[time]);
 
     // componentWillUnmount
-    useEffect(()=>{
-        return ()=>{
+    useEffect(() => {
+        return () => {
             clearInterval(timerID);
         }
-    },[])
+    }, [])
 
 
     return (
         <div className="Clock">
-            <span>{time.getHours()}:{time.getMinutes()}:{time.getSeconds()}</span>
+            <ILTime date={time}/>
         </div>
     );
 }

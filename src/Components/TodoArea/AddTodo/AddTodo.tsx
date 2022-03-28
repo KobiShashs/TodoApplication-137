@@ -6,8 +6,11 @@ import { Task } from "../../../Models/Task";
 import { addTask } from "../../../Services/TasksApi";
 import { Notyf } from "notyf";
 import notyf from "notyf/notyf";
-import notify from "../../../Services/Notifications";
+import notify, { SccMsg } from "../../../Services/Notifications";
+import { useNavigate } from "react-router-dom";
 function AddTodo(): JSX.Element {
+
+    const navigate = useNavigate();
 
     const schema = yup.object().shape({
         title:
@@ -31,18 +34,19 @@ function AddTodo(): JSX.Element {
 
     const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm<Task>({ mode: "all", resolver: yupResolver(schema) });
 
-    const sendToRemote = (task: Task) => {
-        task.id=0;
-        console.log(task); // [Object object]
-        console.log(JSON.stringify(task));
+    const sendToRemote = async (task: Task) => {
 
-        addTask(task)
-            .then(res => { console.log(res.data); })
+        await addTask(task)
+            .then(res => {
+                notify.success(SccMsg.ADDED_TASK);
+                navigate('/tasks');
+
+            })
             .catch(err => {
-                            notify.error(err);
-                            console.log(err);
-                            console.log(err.message);
-                        });
+                notify.error(err);
+                console.log(err);
+                console.log(err.message);
+            });
     }
     return (
         <div className="AddTodo">
@@ -59,7 +63,7 @@ function AddTodo(): JSX.Element {
                 <br />
                 <span>{errors.group?.message}</span>
                 <br />
-                <input type="date" {...register("when")} name="when" placeholder="when" />
+                <input type="datetime-local" {...register("when")} name="when" placeholder="when" />
                 <br />
                 <span>{errors.when?.message}</span>
                 <br />

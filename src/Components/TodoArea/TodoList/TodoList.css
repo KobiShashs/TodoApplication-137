@@ -1,6 +1,7 @@
 .TodoList {
     overflow-y: auto;
     height: 100%;
+    text-align: center;
 }
 
 .container {

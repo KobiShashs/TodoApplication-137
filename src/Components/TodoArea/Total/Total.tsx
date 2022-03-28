@@ -15,7 +15,7 @@ function Total(): JSX.Element {
     },[]);
     return (
         <div className="Total">
-			<div className={count>0?'circle':'empty'}>{count}</div>
+			<div className={count>0 ? 'circle' : 'empty'}>{count}</div>
         </div>
     );
 }

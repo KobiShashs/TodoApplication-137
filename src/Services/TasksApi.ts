@@ -6,6 +6,10 @@ export async function getTasks() {
     return await axios.get<Task[]>(globals.urls.tasks);
 };
 
+export async function countTasks() {
+    return await axios.get<number>(globals.urls.tasks+'count');
+};
+
 export async function addTask(task:Task) {
     return await axios.post<Task>(globals.urls.tasks,task);
 };

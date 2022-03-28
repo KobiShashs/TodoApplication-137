@@ -1,14 +1,11 @@
 /* eslint-disable no-unreachable */
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import { Task } from "../../../Models/Task";
-import globals from "../../../Services/Globals";
+import  {Task,Color}  from "../../../Models/Task";
 import notify, { SccMsg } from "../../../Services/Notifications";
 import { getTasks } from "../../../Services/TasksApi";
 import CustomLink from "../../SharedArea/CustomLink/CustomLink";
 import FlipCard from "../../SharedArea/FlipCard/FlipCard";
-import TodoItem from "../TodoItem/TodoItem";
 import "./TodoList.css";
 
 function TodoList(): JSX.Element {

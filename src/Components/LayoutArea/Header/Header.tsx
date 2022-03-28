@@ -1,3 +1,4 @@
+import Clock from "../../SharedArea/Clock/Clock";
 import Logo from "../../SharedArea/Logo/Logo";
 import "./Header.css";
 
@@ -6,7 +7,7 @@ function Header(): JSX.Element {
         <div className="Header">
 			<Logo/>
             <h1>Todo App</h1>
-            <p>18:02:00</p>
+            <Clock />
         </div>
     );
 }

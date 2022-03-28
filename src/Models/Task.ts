@@ -13,3 +13,7 @@ export class Task{
         this.when = when;
     }
 }
+
+export enum Color{
+    RED,GREEN
+}

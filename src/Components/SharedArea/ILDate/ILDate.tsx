@@ -1,13 +1,11 @@
 import "./ILDate.css";
 import moment from "moment";
-interface ILDateProps{
-    date:Date;
+interface ILDateProps {
+    date: Date;
 }
-function ILDate(props:ILDateProps): JSX.Element {
+function ILDate(props: ILDateProps): JSX.Element {
     return (
-        <div className="ILDate">
-			<p> Date : { moment(props.date).format('DD/MM/yyyy')} </p>
-        </div>
+        <span> {moment(props.date).format('DD/MM/yyyy')} </span>
     );
 }
 

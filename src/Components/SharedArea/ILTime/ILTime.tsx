@@ -1,14 +1,12 @@
 import moment from "moment";
 import "./ILTime.css";
 
-interface ILTimeProps{
-    date:Date
+interface ILTimeProps {
+    date: Date
 }
-function ILTime(props:ILTimeProps): JSX.Element {
+function ILTime(props: ILTimeProps): JSX.Element {
     return (
-        <div className="ILTime">
-			<p> Time : { moment(props.date).format('hh:mm:ss')} </p>
-        </div>
+        <span> {moment(props.date).format('hh:mm:ss')} </span>
     );
 }
 

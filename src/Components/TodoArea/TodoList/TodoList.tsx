@@ -7,6 +7,7 @@ import globals from "../../../Services/Globals";
 import notify, { SccMsg } from "../../../Services/Notifications";
 import { getTasks } from "../../../Services/TasksApi";
 import CustomLink from "../../SharedArea/CustomLink/CustomLink";
+import FlipCard from "../../SharedArea/FlipCard/FlipCard";
 import TodoItem from "../TodoItem/TodoItem";
 import "./TodoList.css";
 
@@ -31,12 +32,10 @@ function TodoList(): JSX.Element {
             <h1>List of Tasks</h1>
            <CustomLink to="/tasks/add"> <FaPlusCircle size={42}/></CustomLink>
 
-            {/* <ul>
-                {tasks.map(task=><li key={task.id}>{task.title},{task.description}</li>)}
-            </ul> */}
 
             <div className="container">
-                {tasks.map(task => <TodoItem key={task.id} task={task} />)}
+                {/* {tasks.map(task => <TodoItem key={task.id} task={task} />)} */}
+                {tasks.map(task => <FlipCard key={task.id} task={task} />)}
             </div>
 
         </div>

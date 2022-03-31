@@ -1,12 +1,27 @@
+import { SyntheticEvent, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { Task } from "../../../Models/Task";
 import ILDate from "../ILDate/ILDate";
 import ILTime from "../ILTime/ILTime";
 import "./FlipCard.css";
+
 interface FlipCardProps {
     task: Task;
 }
 function FlipCard(props: FlipCardProps): JSX.Element {
+
+    const [id,setId] = useState<number>(props.task.id || 0)
+
+
+    const updateTask = (id:number)=>{
+        window.alert('going to update '+id);
+    }
+
+    const deleteTask = (id:number)=>{
+        window.alert('going to delete '+id);
+    }
+
     return (
         <div className="flip-card">
             <div className="flip-card-inner">
@@ -19,8 +34,10 @@ function FlipCard(props: FlipCardProps): JSX.Element {
                     <p>{props.task.group}</p>
                     <p><ILDate date={props.task.when || new Date()} /> <ILTime date={props.task.when || new Date()} /></p>
                     <div className="buttons">
-                        <FaTrash size={42} />
-                        <FaEdit size={42} />
+                        {/* <button onClick={()=>deleteTask(props.task.id || 0)}><FaTrash size={42} /> </button> */}
+                        {/* <button onClick={()=>updateTask(props.task.id || 0)}><FaEdit size={42} /></button> */}
+                        <Link to={`/tasks/edit/${props.task.id}`}><FaEdit size={42} /></Link>
+                        <Link to={`/tasks/delete/${props.task.id}`}><FaTrash size={42} /></Link>
                     </div>
                 </div>
             </div>

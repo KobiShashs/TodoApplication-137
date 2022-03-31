@@ -8,6 +8,8 @@ import { Notyf } from "notyf";
 import notyf from "notyf/notyf";
 import notify, { SccMsg } from "../../../Services/Notifications";
 import { useNavigate } from "react-router-dom";
+import store from "../../../Redux/store";
+import { taskAddedAction } from "../../../Redux/TasksAppState";
 function AddTodo(): JSX.Element {
 
     const navigate = useNavigate();
@@ -39,6 +41,8 @@ function AddTodo(): JSX.Element {
         await addTask(task)
             .then(res => {
                 notify.success(SccMsg.ADDED_TASK);
+                //Updtaing global state.
+                store.dispatch(taskAddedAction(res.data));
                 navigate('/tasks');
 
             })
@@ -50,6 +54,7 @@ function AddTodo(): JSX.Element {
     }
     return (
         <div className="AddTodo">
+            <h2>Add new Task</h2>
             <form onSubmit={handleSubmit(sendToRemote)}>
                 <input type="text" {...register("title")} name="title" placeholder="title" />
                 <br />
@@ -67,7 +72,7 @@ function AddTodo(): JSX.Element {
                 <br />
                 <span>{errors.when?.message}</span>
                 <br />
-                <button className="button4" >Yalla</button>
+                <button className="button-app" >Yalla</button>
             </form>
         </div>
     );

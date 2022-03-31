@@ -19,11 +19,53 @@ html, body, #root {
   margin: 0;
 }
 
-p{
+p {
   font-size: large;
 }
 
-.image-distance{
+.image-distance {
   margin: 2px;
   padding: 2px;
+}
+
+.box {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 8px 10px #888888;
+  background-color: #F1E1A6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+form{
+  text-align: center;
+}
+
+input[type=text], input[type=date] {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+.button-app {
+  width: 150px;
+  height: 30px;
+  background-color: #226639;
+  color: white;
+  border: 2px solid #e7e7e7;
+  border-radius: 5px;
+}
+
+.button-app:hover {
+  background-color: rgb(84, 129, 99);
+  color:white;
+}
+
+.span-errors{
+  color: red;
+  font-weight: 700;
 }

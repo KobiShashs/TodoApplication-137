@@ -5,6 +5,7 @@ export enum SccMsg{
     UPDATED_TASK = 'Updated task successfully',
     DELETED_TASK = 'Deleted task successfully',
     GOT_TASKS = 'got tasks successfully',
+    GOT_SINGLE_TASK = 'got task successfully',
 
 }
 export enum ErrMsg{

@@ -2,36 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100%;
     align-self:center;
 }
 
-.AddTodo form{
-    text-align: center;
-}
-
-.AddTodo input[type=text], input[type=date] {
-    width: 100%;
-    padding: 6px 10px;
-    margin: 4px 0;
-    box-sizing: border-box;
-}
-
-.AddTodo .button4 {
-    width: 150px;
-    height: 30px;
-    background-color: #226639;
-    color: white;
-    border: 2px solid #e7e7e7;
-    border-radius: 5px;
-}
-
-.AddTodo .button4:hover {
-    background-color: rgb(84, 129, 99);
-    color:white;
-}
-
-.AddTodo span{
-    color: red;
-    font-weight: 700;
-}

@@ -3,7 +3,7 @@ import "./Home.css";
 function Home(): JSX.Element {
     return (
         <div className="Home">
-			Bo Tire Ma Pispasta bo Tire
+			<img src='https://media.giphy.com/media/xTiTnuhyBF54B852nK/giphy.gif' alt=''/>
         </div>
     );
 }

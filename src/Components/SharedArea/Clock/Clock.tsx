@@ -37,9 +37,7 @@ function Clock(): JSX.Element {
 
 
     return (
-        <div className="Clock">
-            <ILTime date={time}/>
-        </div>
+        <div className="Clock"><ILTime date={time} /></div>
     );
 }
 

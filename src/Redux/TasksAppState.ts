@@ -33,7 +33,7 @@ export function taskUpdatedAction(task: Task): TaskAction {
     return { type: TasksActionType.TaskUpdated, payload: task };
 }
 
-export function taskDeletedAction(id:number): TaskAction {
+export function taskDeletedAction(id: number): TaskAction {
     return { type: TasksActionType.TaskDeleted, payload: id };
 }
 
@@ -46,12 +46,12 @@ export function taskDeletedAction(id:number): TaskAction {
 
 
 // Step 5 - Reducer function perform the required action
-export function tasksReducer(currentState: TasksAppState = new TasksAppState(),action:TaskAction): TasksAppState{
+export function tasksReducer(currentState: TasksAppState = new TasksAppState(), action: TaskAction): TasksAppState {
     // const newState = new CatsAppState();
     // newState.cats = currentState.cats;
 
-    const newState = {...currentState} //Spread Operator
-    switch(action.type){
+    const newState = { ...currentState } //Spread Operator
+    switch (action.type) {
         case TasksActionType.TasksDownloaded:
             newState.tasks = action.payload;
             break;
@@ -59,13 +59,13 @@ export function tasksReducer(currentState: TasksAppState = new TasksAppState(),a
             newState.tasks.push(action.payload);
             break;
         case TasksActionType.TaskUpdated:
-              const idx = newState.tasks.findIndex(task => task.id === action.payload.id);
-              newState.tasks[idx]=action.payload;    
+            const idx = newState.tasks.findIndex(task => task.id === action.payload.id);
+            newState.tasks[idx] = action.payload;
             break
-            case TasksActionType.TaskDeleted:
-                newState.tasks = newState.tasks.filter(c=>c.id !== action.payload);
-                break
+        case TasksActionType.TaskDeleted:
+            newState.tasks = newState.tasks.filter(c => c.id !== action.payload);
+            break
     }
     return newState;
-    
+
 }

@@ -69,3 +69,32 @@ input[type=text], input[type=date] {
   color: red;
   font-weight: 700;
 }
+
+.full {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  background: green;
+  padding: 3px;
+}
+
+.empty {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  background: tomato;
+  padding: 3px;
+}
+
+
+Link{
+  
+}

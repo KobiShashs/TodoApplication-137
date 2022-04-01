@@ -41,7 +41,7 @@ function AddTodo(): JSX.Element {
         await addTask(task)
             .then(res => {
                 notify.success(SccMsg.ADDED_TASK);
-                //Updtaing global state.
+                //Updating global state.
                 store.dispatch(taskAddedAction(res.data));
                 navigate('/tasks');
 

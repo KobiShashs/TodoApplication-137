@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import store from "../../../Redux/store";
 import notify from "../../../Services/Notifications";
 import { countTasks } from "../../../Services/TasksApi";
+import Circle from "../../SharedArea/Circle/Circle";
 import "./Total.css";
 
 function Total(): JSX.Element {
@@ -16,7 +17,7 @@ function Total(): JSX.Element {
         }
 
 
-    }, []);
+    }, [count]);//WOW!
 
     useEffect(() => {
         return store.subscribe(() => {
@@ -29,7 +30,7 @@ function Total(): JSX.Element {
 
     return (
         <div className="Total">
-            <div className={count > 0 ? 'circle' : 'empty'}>{count}</div>
+            <Circle val={count} />
         </div>
     );
 }

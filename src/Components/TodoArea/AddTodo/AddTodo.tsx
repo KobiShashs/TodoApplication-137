@@ -2,7 +2,7 @@ import "./AddTodo.css";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Task } from "../../../Models/Task";
+import { TaskModel } from "../../../Models/TaskModel";
 import { addTask } from "../../../Services/TasksApi";
 import { Notyf } from "notyf";
 import notyf from "notyf/notyf";
@@ -34,14 +34,14 @@ function AddTodo(): JSX.Element {
     });
 
 
-    const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm<Task>({ mode: "all", resolver: yupResolver(schema) });
+    const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm<TaskModel>({ mode: "all", resolver: yupResolver(schema) });
 
-    const sendToRemote = async (task: Task) => {
+    const sendToRemote = async (task: TaskModel) => {
 
         await addTask(task)
             .then(res => {
                 notify.success(SccMsg.ADDED_TASK);
-                //Updating global state.
+                // Updating global state
                 store.dispatch(taskAddedAction(res.data));
                 navigate('/tasks');
 
@@ -56,23 +56,27 @@ function AddTodo(): JSX.Element {
         <div className="AddTodo">
             <h2>Add new Task</h2>
             <form onSubmit={handleSubmit(sendToRemote)}>
+                <label htmlFor="title">title</label>
                 <input type="text" {...register("title")} name="title" placeholder="title" />
                 <br />
                 <span>{errors.title?.message}</span>
                 <br />
+                <label htmlFor="description">description</label>
                 <input type="text" {...register("description")} name="description" placeholder="description" />
                 <br />
                 <span>{errors.description?.message}</span>
                 <br />
+                <label htmlFor="group">group</label>
                 <input type="text" {...register("group")} name="group" placeholder="group" />
                 <br />
                 <span>{errors.group?.message}</span>
                 <br />
-                <input type="datetime-local" {...register("when")} name="when" placeholder="when" />
+                <label htmlFor="when">when</label>
+                <input type="datetime-local" step="any" {...register("when")} name="when" placeholder="when" />
                 <br />
                 <span>{errors.when?.message}</span>
                 <br />
-                <button className="button-app" >Yalla</button>
+                <button className="button-app" disabled={!isValid}>Yalla</button>
             </form>
         </div>
     );

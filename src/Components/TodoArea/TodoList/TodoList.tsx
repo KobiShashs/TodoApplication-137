@@ -1,7 +1,7 @@
 /* eslint-disable no-unreachable */
 import { useEffect, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import { Task, Color } from "../../../Models/Task";
+import { TaskModel, Color } from "../../../Models/TaskModel";
 import store from "../../../Redux/store";
 import { tasksDownloadedAction } from "../../../Redux/TasksAppState";
 import notify, { SccMsg } from "../../../Services/Notifications";
@@ -13,7 +13,7 @@ import "./TodoList.css";
 
 function TodoList(): JSX.Element {
 
-    const [tasks, setTasks] = useState<Task[]>(store.getState().taskReducer.tasks);
+    const [tasks, setTasks] = useState<TaskModel[]>(store.getState().taskReducer.tasks);
 
 
     // Side effects goes here
@@ -21,9 +21,9 @@ function TodoList(): JSX.Element {
         if (tasks?.length === 0) {
             getTasks()
                 .then((res) => {
-                    //Update Component State
+                    // Updating Component State
                     setTasks(res.data);
-                    //Update Application State
+                    // Updating global state
                     store.dispatch(tasksDownloadedAction(res.data));
                     notify.success(SccMsg.GOT_TASKS);
                 })

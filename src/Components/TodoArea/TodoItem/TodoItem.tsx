@@ -1,10 +1,10 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { Task } from "../../../Models/Task";
+import { TaskModel } from "../../../Models/TaskModel";
 import ILDate from "../../SharedArea/ILDate/ILDate";
 import ILTime from "../../SharedArea/ILTime/ILTime";
 import "./TodoItem.css";
 interface TodoItemProps {
-    task: Task;
+    task: TaskModel;
 }
 function TodoItem(props: TodoItemProps): JSX.Element {
 

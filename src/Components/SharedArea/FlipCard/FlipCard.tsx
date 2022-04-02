@@ -1,13 +1,13 @@
 import { SyntheticEvent, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Task } from "../../../Models/Task";
+import { TaskModel } from "../../../Models/TaskModel";
 import ILDate from "../ILDate/ILDate";
 import ILTime from "../ILTime/ILTime";
 import "./FlipCard.css";
 
 interface FlipCardProps {
-    task: Task;
+    task: TaskModel;
 }
 function FlipCard(props: FlipCardProps): JSX.Element {
 

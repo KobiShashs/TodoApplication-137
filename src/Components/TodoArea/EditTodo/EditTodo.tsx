@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TaskModel } from "../../../Models/TaskModel";
 import { updateTask } from "../../../WebApi/TasksApi";
-import notify, { SccMsg } from "../../../Services/Notifications";
+import notify, { ErrMsg, SccMsg } from "../../../Services/Notifications";
 import { useEffect, useState } from "react";
 import store from "../../../Redux/store";
 import { taskUpdatedAction } from "../../../Redux/TasksAppState";
@@ -14,6 +14,19 @@ function EditTodo(): JSX.Element {
 
 
     const navigate = useNavigate();
+
+
+
+    useEffect(() => {
+        // If we don't have a user object - we are not logged in
+        if (!store.getState().authState.user.token) {
+            notify.error(ErrMsg.PLS_LOGIN);
+            navigate('/login');
+        }
+    },[])
+
+
+
     const params = useParams();
     const id = +(params.id || '');
 
@@ -84,16 +97,13 @@ function EditTodo(): JSX.Element {
 
     // }, [id]);// Wow
 
-    const onSubmit = (data: TaskModel) => {
-        console.log(data);
-    }
-
+    
 
     return (
         <div className="EditTodo">
             <h2>Update existing Task</h2>
             {/* <form onSubmit={handleSubmit(sendToRemote)}> */}
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(sendToRemote)}>
                 <label htmlFor="id">id</label>
                 <br/>
                 <input

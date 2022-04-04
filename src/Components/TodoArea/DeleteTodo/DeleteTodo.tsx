@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import store from "../../../Redux/store";
 import { taskDeletedAction } from "../../../Redux/TasksAppState";
-import notify, { SccMsg } from "../../../Services/Notifications";
+import notify, { ErrMsg, SccMsg } from "../../../Services/Notifications";
 import { deleteTask } from "../../../WebApi/TasksApi";
 import "./DeleteTodo.css";
 
@@ -10,6 +11,16 @@ function DeleteTodo(): JSX.Element {
     const navigate = useNavigate();
     const params = useParams();
     const id = +(params.id || '');
+
+
+    useEffect(() => {
+        // If we don't have a user object - we are not logged in
+        if (!store.getState().authState.user.token) {
+            console.log(store.getState().authState.user);
+            notify.error(ErrMsg.PLS_LOGIN);
+            navigate('/login');
+        }
+    },[])
 
 
     const yes = () => {

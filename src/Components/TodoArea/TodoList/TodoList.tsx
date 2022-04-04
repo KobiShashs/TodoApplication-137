@@ -1,10 +1,11 @@
 /* eslint-disable no-unreachable */
 import { useEffect, useState } from "react";
 import { FaPlusCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { TaskModel, Color } from "../../../Models/TaskModel";
 import store from "../../../Redux/store";
 import { tasksDownloadedAction } from "../../../Redux/TasksAppState";
-import notify, { SccMsg } from "../../../Services/Notifications";
+import notify, { ErrMsg, SccMsg } from "../../../Services/Notifications";
 import { getTasks } from "../../../WebApi/TasksApi";
 import CustomLink from "../../SharedArea/CustomLink/CustomLink";
 import EmptyView from "../../SharedArea/EmptyView/EmptyView";
@@ -12,9 +13,18 @@ import FlipCard from "../../SharedArea/FlipCard/FlipCard";
 import "./TodoList.css";
 
 function TodoList(): JSX.Element {
+    const navigate = useNavigate();
 
     const [tasks, setTasks] = useState<TaskModel[]>(store.getState().taskReducer.tasks);
 
+
+    useEffect(() => {
+        // If we don't have a user object - we are not logged in
+        if (!store.getState().authState.user.token) {
+            notify.error(ErrMsg.PLS_LOGIN);
+            navigate('/login');
+        }
+    },[])
 
     // Side effects goes here
     useEffect(() => {
@@ -27,7 +37,7 @@ function TodoList(): JSX.Element {
                     store.dispatch(tasksDownloadedAction(res.data));
                     // notify.success(SccMsg.GOT_TASKS);
                 })
-                .catch((err) => { notify.error(err); });
+                .catch((err) => { /*notify.error(err);*/ });
         }
     }, []);
 

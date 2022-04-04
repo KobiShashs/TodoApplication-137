@@ -12,7 +12,7 @@ export enum SccMsg {
 
 }
 export enum ErrMsg {
-
+    PLS_LOGIN = 'please login'
 }
 class Notify {
 

@@ -6,13 +6,22 @@ import { TaskModel } from "../../../Models/TaskModel";
 import { addTask } from "../../../WebApi/TasksApi";
 import { Notyf } from "notyf";
 import notyf from "notyf/notyf";
-import notify, { SccMsg } from "../../../Services/Notifications";
+import notify, { ErrMsg, SccMsg } from "../../../Services/Notifications";
 import { useNavigate } from "react-router-dom";
 import store from "../../../Redux/store";
 import { taskAddedAction } from "../../../Redux/TasksAppState";
+import { useEffect } from "react";
 function AddTodo(): JSX.Element {
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // If we don't have a user object - we are not logged in
+        if (!store.getState().authState.user.token) {
+            notify.error(ErrMsg.PLS_LOGIN);
+            navigate('/login');
+        }
+    },[])
 
     const schema = yup.object().shape({
         title:

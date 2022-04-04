@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import store from "../../../Redux/store";
 import { taskDeletedAction } from "../../../Redux/TasksAppState";
 import notify, { SccMsg } from "../../../Services/Notifications";
-import { deleteTask } from "../../../Services/TasksApi";
+import { deleteTask } from "../../../WebApi/TasksApi";
 import "./DeleteTodo.css";
 
 function DeleteTodo(): JSX.Element {

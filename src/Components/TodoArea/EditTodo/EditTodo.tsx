@@ -4,7 +4,7 @@ import { useForm, useFormState } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TaskModel } from "../../../Models/TaskModel";
-import { updateTask } from "../../../Services/TasksApi";
+import { updateTask } from "../../../WebApi/TasksApi";
 import notify, { SccMsg } from "../../../Services/Notifications";
 import { useEffect, useState } from "react";
 import store from "../../../Redux/store";
@@ -151,7 +151,7 @@ function EditTodo(): JSX.Element {
                 <br />
                 <span>{errors.when?.message}</span>
                 <br />
-                <button disabled={!isDirty} className="button-app" >Yalla</button>
+                <button disabled={!isDirty} className="button-app" >Update Task</button>
             </form>
         </div>
     );

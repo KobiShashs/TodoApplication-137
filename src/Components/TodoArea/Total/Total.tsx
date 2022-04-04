@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import store from "../../../Redux/store";
 import notify from "../../../Services/Notifications";
-import { countTasks } from "../../../Services/TasksApi";
+import { countTasks } from "../../../WebApi/TasksApi";
 import Circle from "../../SharedArea/Circle/Circle";
 import "./Total.css";
 

@@ -5,7 +5,7 @@ import { TaskModel, Color } from "../../../Models/TaskModel";
 import store from "../../../Redux/store";
 import { tasksDownloadedAction } from "../../../Redux/TasksAppState";
 import notify, { SccMsg } from "../../../Services/Notifications";
-import { getTasks } from "../../../Services/TasksApi";
+import { getTasks } from "../../../WebApi/TasksApi";
 import CustomLink from "../../SharedArea/CustomLink/CustomLink";
 import EmptyView from "../../SharedArea/EmptyView/EmptyView";
 import FlipCard from "../../SharedArea/FlipCard/FlipCard";
@@ -25,7 +25,7 @@ function TodoList(): JSX.Element {
                     setTasks(res.data);
                     // Updating global state
                     store.dispatch(tasksDownloadedAction(res.data));
-                    notify.success(SccMsg.GOT_TASKS);
+                    // notify.success(SccMsg.GOT_TASKS);
                 })
                 .catch((err) => { notify.error(err); });
         }

@@ -2,6 +2,7 @@
 // Step 1 - Create AppState and manage the collection once and in a centralize place
 
 import { UserModel } from "../Models/UserModel";
+import store from "./store";
 
 export class AuthAppState {
     public user: UserModel = new UserModel();
@@ -33,8 +34,8 @@ export interface AuthAction {
 }
 
 // Step 4 - Export Action Creators functions that gets payload and return relevant Action
-export function registerAction(user: UserModel): AuthAction {
-    return { type: AuthActionType.Register, payload: user };
+export function registerAction(): AuthAction {
+    return { type: AuthActionType.Register, payload: {} };
 }
 
 export function loginAction(user: UserModel): AuthAction {
@@ -52,8 +53,8 @@ export function authReducer(currentState: AuthAppState = new AuthAppState(),
     const newState = { ...currentState } //Spread Operator
     switch (action.type) {
         case AuthActionType.Register: //Payload is registered user from backend
-            newState.user = action.payload;
-            localStorage.setItem("user", JSON.stringify(newState.user)); // Saving in the session storage (won't be deleted)
+            //newState.user = action.payload;
+            //localStorage.setItem("user", JSON.stringify(newState.user)); // Saving in the session storage (won't be deleted)
             break;
         case AuthActionType.Login://Payload is logged i user from backend
             newState.user = action.payload;

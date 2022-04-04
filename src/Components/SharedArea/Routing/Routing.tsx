@@ -1,5 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import App from "../../../App";
+import Login from "../../AuthArea/Login/Login";
+import Logout from "../../AuthArea/Logout/Logout";
+import Register from "../../AuthArea/Register/Register";
 import About from "../../PagesArea/About/About";
 import Credits from "../../PagesArea/Credits/Credits";
 import Home from "../../PagesArea/Home/Home";
@@ -13,7 +16,6 @@ import "./Routing.css";
 function Routing(): JSX.Element {
     return (
         <div className="Routing">
-			
             <Routes>
                 <Route path='/' element={<App/>}/>
                 <Route path='/home' element={<Home/>}/>
@@ -24,6 +26,9 @@ function Routing(): JSX.Element {
                 <Route path='/tasks/delete/:id' element={<DeleteTodo/>}/>
                 <Route path='/about' element={<About/>}/>
                 <Route path='/credits' element={<Credits/>}/>
+                <Route path='/register' element={<Register/>}/>
+                <Route path='/login' element={<Login/>}/>
+                <Route path='/logout' element={<Logout/>}/>
                 <Route path='*' element={<Page404/>}/>
             </Routes>
         </div>

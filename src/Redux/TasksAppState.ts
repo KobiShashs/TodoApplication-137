@@ -12,7 +12,8 @@ export enum TasksActionType {
     TasksDownloaded = "TasksDownloaded",
     TaskAdded = "TaskAdded",
     TaskUpdated = "TaskUpdated",
-    TaskDeleted = "TaskDeleted"
+    TaskDeleted = "TaskDeleted",
+    TasksClear = "TasksClear"
 }
 
 
@@ -39,6 +40,10 @@ export function taskDeletedAction(id: number): TaskAction {
     return { type: TasksActionType.TaskDeleted, payload: id };
 }
 
+export function tasksClearAction(): TaskAction {
+    return { type: TasksActionType.TasksClear, payload: {} };
+}
+
 
 
 
@@ -63,6 +68,9 @@ export function tasksReducer(currentState: TasksAppState = new TasksAppState(), 
             break;
         case TasksActionType.TaskDeleted:
             newState.tasks = newState.tasks.filter(c => c.id !== action.payload);
+            break;
+        case TasksActionType.TasksClear:
+            newState.tasks = [];
             break;
     }
     return newState;

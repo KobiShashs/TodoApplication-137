@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { TaskModel } from "../../../Models/TaskModel";
-import { addTask } from "../../../Services/TasksApi";
+import { addTask } from "../../../WebApi/TasksApi";
 import { Notyf } from "notyf";
 import notyf from "notyf/notyf";
 import notify, { SccMsg } from "../../../Services/Notifications";
@@ -76,7 +76,7 @@ function AddTodo(): JSX.Element {
                 <br />
                 <span>{errors.when?.message}</span>
                 <br />
-                <button className="button-app" disabled={!isValid}>Yalla</button>
+                <button className="button-app" disabled={!isValid}>Create Task</button>
             </form>
         </div>
     );

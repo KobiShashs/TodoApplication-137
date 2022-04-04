@@ -65,7 +65,7 @@ form .button-app {
   text-align: center;
 }
 
-input[type=text], input[type=date], input[type=datetime-local], input[type=number] {
+input[type=text], input[type=date], input[type=datetime-local], input[type=number], input[type=email], input[type=password] {
   width: 100%;
   padding: 6px 10px;
   margin: 4px 0;
